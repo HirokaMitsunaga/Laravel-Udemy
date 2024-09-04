@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UtilityController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\RequestSampleController;
+use App\Http\Controllers\EventController;
 
 Route::get('/helllo-world', fn() => view(view: 'hello-world'));
 Route::get(
@@ -23,6 +24,25 @@ Route::get('/omikuji', [GameController::class, 'omikuji']);
 // モンティ・ホール問題
 Route::get('/monty-hall', [GameController::class, 'montyHall']);
 
-// フォーム
+// リクエスト
 Route::get('/form', [RequestSampleController::class, 'form']);
 Route::get('/query-strings', [RequestSampleController::class, 'queryStrings']);
+Route::get('/users/{id}', [RequestSampleController::class, 'profile'])->name(
+    name: 'profile'
+);
+Route::get('/products/{category}/{year}', [
+    RequestSampleController::class,
+    'productArcive',
+]);
+Route::get('route-link', [RequestSampleController::class, 'routeLink']);
+
+Route::get('/login', [RequestSampleController::class, 'loginForm']);
+Route::post('/login', [RequestSampleController::class, 'login'])->name(
+    name: 'login'
+);
+
+Route::resource('/event', EventController::class)->only([
+    'index',
+    'create',
+    'store',
+]);
