@@ -41,8 +41,4 @@ Route::post('/login', [RequestSampleController::class, 'login'])->name(
     name: 'login'
 );
 
-Route::resource('/event', EventController::class)->only([
-    'index',
-    'create',
-    'store',
-]);
+Route::resource('/events', EventController::class)->only(['create', 'store']);
