@@ -6,6 +6,8 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\RequestSampleController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HiLowController;
+use App\Http\Controllers\PhotoController;
+use Illuminate\Session\Store;
 
 Route::get('/helllo-world', fn() => view(view: 'hello-world'));
 Route::get(
@@ -47,3 +49,6 @@ Route::resource('/events', EventController::class)->only(['create', 'store']);
 // ハイローゲーム
 Route::get('/hi-low', [HiLowController::class, 'index'])->name('hi-low');
 Route::post('/hi-low', [HiLowController::class, 'result']);
+
+//ファイルアップロード
+Route::resource('/photos', PhotoController::class)->only(['create', 'store']);
