@@ -6,6 +6,10 @@
         <p>{{ session()->get('success') }}</p>
     @endif
 
+    @if (session()->has('delete'))
+        <p>{{ session()->get('delete') }}</p>
+    @endif
+
     <form
         action="{{ route('photos.store') }}"
         method="post"

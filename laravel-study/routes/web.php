@@ -55,4 +55,5 @@ Route::resource('/photos', PhotoController::class)->only([
     'create',
     'store',
     'show',
+    'destroy',
 ]);
