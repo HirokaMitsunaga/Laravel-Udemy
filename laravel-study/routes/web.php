@@ -51,4 +51,8 @@ Route::get('/hi-low', [HiLowController::class, 'index'])->name('hi-low');
 Route::post('/hi-low', [HiLowController::class, 'result']);
 
 //ファイルアップロード
-Route::resource('/photos', PhotoController::class)->only(['create', 'store']);
+Route::resource('/photos', PhotoController::class)->only([
+    'create',
+    'store',
+    'show',
+]);
