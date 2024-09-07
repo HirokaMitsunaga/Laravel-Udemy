@@ -60,4 +60,11 @@ class PhotoController extends Controller {
         Storage::disk('public')->delete('photos/' . $fileName);
         return to_route('photos.create')->with('delete', '削除が完了しました');
     }
+
+    public function download($fileName) {
+        return Storage::disk('public')->download(
+            'photos/' . $fileName,
+            'アップロード画像.jpg'
+        );
+    }
 }

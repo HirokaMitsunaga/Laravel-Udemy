@@ -57,3 +57,8 @@ Route::resource('/photos', PhotoController::class)->only([
     'show',
     'destroy',
 ]);
+
+Route::get('/photos/{photo}/download', [
+    PhotoController::class,
+    'download',
+])->name('photos.download');
