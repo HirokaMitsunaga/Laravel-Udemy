@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use \Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -15,7 +16,7 @@ class ContactAdminMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public array $contactInfo)
     {
         //
     }
@@ -26,7 +27,8 @@ class ContactAdminMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: 'user@example.com',
+            // from: $this->contactInfo['email'],
+            from: new Address($this->contactInfo['email'], $this->contactInfo['name']),
             subject: 'お問い合わせがありました',
         );
     }
