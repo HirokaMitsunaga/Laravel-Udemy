@@ -76,10 +76,15 @@ class AdminBlogController extends Controller {
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //指定したIDのブログの削除処理
     public function destroy(string $id) {
-        //
+        $blog = Blog::findOrFail($id);
+        $blog->delete();
+        Storage::disk('public')->delete($blog->image);
+
+        return to_route('admin.blogs.index')->with(
+            'success',
+            'ブログを削除しました',
+        );
     }
 }
