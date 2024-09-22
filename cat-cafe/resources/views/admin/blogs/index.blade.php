@@ -35,7 +35,7 @@
                                         alt="" />
                                     <p class="font-medium">
                                         <a
-                                            href="{{ route('admin.blogs.edit', ['blog' => $blog->id]) }}">
+                                            href="{{ route('admin.blogs.edit', ['blog' => $blog) }}">
                                             {{ $blog->title }}
                                         </a>
                                     </p>
