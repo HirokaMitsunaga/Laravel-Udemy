@@ -47,7 +47,7 @@
                                 class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded"
                                 type="text"
                                 name="title"
-                                value="{{ old('title') }}" />
+                                value="{{ old('title', $blog->title) }}" />
                         </div>
 
                         <div class="mb-6">
@@ -59,8 +59,8 @@
                             <div class="flex items-end">
                                 <img
                                     id="previewImage"
-                                    src="/images/admin/noimage.jpg"
-                                    data-noimage="/images/admin/noimage.jpg"
+                                    src="{{ asset('storage/' . $blog->image) }}"
+                                    data-noimage="{{ asset('storage/' . $blog->image) }}"
                                     alt=""
                                     class="rounded shadow-md w-64" />
                                 <input
@@ -83,7 +83,7 @@
                                 class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded"
                                 name="body"
                                 rows="5">
-                            {{ old('body') }}</textarea
+                            {{ old('body', $blog->body) }}</textarea
                             >
                         </div>
 
