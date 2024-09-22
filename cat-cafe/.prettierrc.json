@@ -15,9 +15,9 @@
         {
             "files": "*.blade.php",
             "options": {
-                "parser": "blade"
+                "parser": "blade",
+                "bracketSameLine": true
             }
         }
     ]
 }
-
