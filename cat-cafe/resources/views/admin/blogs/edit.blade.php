@@ -5,17 +5,18 @@
         <div class="container px-4 mx-auto">
             <div class="py-4 bg-white rounded">
                 <form
-                    action="{{ route('admin.blogs.store') }}"
+                    action="{{ route('admin.blogs.update', ['blog' => $blog->id]) }}"
                     method="post"
                     enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="flex px-6 pb-4 border-b">
-                        <h3 class="text-xl font-bold">ブログ登録</h3>
+                        <h3 class="text-xl font-bold">ブログ編集</h3>
                         <div class="ml-auto">
                             <button
                                 type="submit"
                                 class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">
-                                保存
+                                更新
                             </button>
                         </div>
                     </div>

@@ -30,3 +30,6 @@ Route::post('admin/blogs', [AdminBlogController::class, 'store'])->name(
 Route::get('/admin/blogs/{blog}', [AdminBlogController::class, 'edit'])->name(
     'admin.blogs.edit',
 );
+Route::put('/admin/blogs/{blog}', [AdminBlogController::class, 'update'])->name(
+    'admin.blogs.update',
+);
