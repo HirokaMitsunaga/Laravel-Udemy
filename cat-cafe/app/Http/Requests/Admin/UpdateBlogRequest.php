@@ -19,6 +19,7 @@ class UpdateBlogRequest extends FormRequest {
      */
     public function rules() {
         return [
+            'category_id' => ['required', 'exists:categories,id'],
             'title' => ['required', 'max:255'],
             'image' => [
                 'nullable', //省略可

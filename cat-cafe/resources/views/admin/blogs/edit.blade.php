@@ -1,15 +1,15 @@
-@extends('layouts.admin')
+@extends("layouts.admin")
 
-@section('content')
+@section("content")
     <section class="py-8">
         <div class="container px-4 mx-auto">
             <div class="py-4 bg-white rounded">
                 <form
-                    action="{{ route('admin.blogs.update', ['blog' => $blog->id]) }}"
+                    action="{{ route("admin.blogs.update", ["blog" => $blog->id]) }}"
                     method="post"
                     enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+                    @method("PUT")
                     <div class="flex px-6 pb-4 border-b">
                         <h3 class="text-xl font-bold">ブログ編集</h3>
                         <div class="ml-auto">
@@ -48,7 +48,7 @@
                                 class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded"
                                 type="text"
                                 name="title"
-                                value="{{ old('title', $blog->title) }}" />
+                                value="{{ old("title", $blog->title) }}" />
                         </div>
 
                         <div class="mb-6">
@@ -60,8 +60,8 @@
                             <div class="flex items-end">
                                 <img
                                     id="previewImage"
-                                    src="{{ asset('storage/' . $blog->image) }}"
-                                    data-noimage="{{ asset('storage/' . $blog->image) }}"
+                                    src="{{ asset("storage/" . $blog->image) }}"
+                                    data-noimage="{{ asset("storage/" . $blog->image) }}"
                                     alt=""
                                     class="rounded shadow-md w-64" />
                                 <input
@@ -84,7 +84,7 @@
                                 class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded"
                                 name="body"
                                 rows="5">
-                            {{ old('body', $blog->body) }}</textarea
+                            {{ old("body", $blog->body) }}</textarea
                             >
                         </div>
 
@@ -98,11 +98,17 @@
                                 <select
                                     id="category"
                                     class="appearance-none block pl-4 pr-8 py-3 mb-2 text-sm bg-white border rounded"
-                                    name="">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
+                                    name="category_id">
+                                    <option value="">選択してください</option>
+                                    @foreach ($categories as $category)
+                                        <option
+                                            value="{{ $category->id }}"
+                                            @if ($category->id == old("category_id", $blog->category->id))
+                                                selected
+                                            @endif>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                                 <div
                                     class="pointer-events-none transform -translate-x-full flex items-center px-2 text-gray-500">
