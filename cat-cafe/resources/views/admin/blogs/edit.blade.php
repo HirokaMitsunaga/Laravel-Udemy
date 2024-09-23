@@ -130,12 +130,16 @@
                             <select
                                 id="js-pulldown"
                                 class="mr-6 w-full"
-                                name=""
+                                name="cats[]"
                                 multiple>
-                                <option selected>Option 1</option>
-                                <option>Option 2</option>
-                                <option selected>Option 3</option>
-                                <option>Option 4</option>
+                                <option value="">選択してください</option>
+                                @foreach ($cats as $cat)
+                                    <option
+                                        value="{{ $cat->id }}"
+                                        @if (in_array($cat->id,old('cats', $blog->cats->pluck('id')->all()))) selected @endif>
+                                        {{ $cat->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
