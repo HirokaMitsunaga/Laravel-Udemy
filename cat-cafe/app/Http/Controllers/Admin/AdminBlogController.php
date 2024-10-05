@@ -9,12 +9,15 @@ use App\Http\Requests\Admin\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Cat;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AdminBlogController extends Controller {
     //ブログ一覧画面
     public function index() {
+        // $user = Auth::user();
         $blogs = Blog::latest('updated_at')->paginate(10);
+        // return view('admin.blogs.index', ['blogs' => $blogs, 'user' => $user]);
         return view('admin.blogs.index', ['blogs' => $blogs]);
     }
 
@@ -50,9 +53,11 @@ class AdminBlogController extends Controller {
 
     //指定したIDのブログ編集画面
     public function edit(Blog $blog) {
+        // $user = Auth::user();
         $categories = Category::all();
         $cats = Cat::all();
         return view('admin.blogs.edit', [
+            // 'user' => $user,
             'blog' => $blog,
             'categories' => $categories,
             'cats' => $cats,
