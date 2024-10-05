@@ -20,9 +20,9 @@ Route::get('/contact/complete', [ContactController::class, 'complete'])->name(
 );
 
 //ブログ
-Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name(
-    'admin.blogs.index',
-);
+Route::get('/admin/blogs', [AdminBlogController::class, 'index'])
+    ->name('admin.blogs.index')
+    ->middleware('auth');
 Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name(
     'admin.blogs.create',
 );
