@@ -147,7 +147,10 @@
                                 <span>設定</span>
                             </a>
 
-                            <form>
+                            <form
+                                action="{{ route('admin.logout') }}"
+                                method="POST">
+                                @csrf
                                 <button
                                     type="submit"
                                     class="w-full flex items-center pl-3 py-3 pr-2 text-gray-50 hover:bg-gray-900 rounded">
